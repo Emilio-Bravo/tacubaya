@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--SCRIPTS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="js/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_js_bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <title>Distribuidora Tacubaya - Precios</title>
+  </head>
+  <body class="bg-body-tertiary">
+    <div class="container shadow-sm min-vh-100 p-3 bg-white">
+      <nav class="navbar bg-light mb-3">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="#">Distribuidora Tacubaya</a>
+            <img src="logo.png" class="m-2 mt-0" id="logo" />
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Funciones
+                  </a>
+                  <ul class="dropdown-menu show">
+                    <li>
+                      <a class="dropdown-item" id="load-btn" href="#"
+                        >Cargar datos</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <form action="#">
+        <div class="row justify-content-center align-items-center bg-light p-3">
+          <div class="col">
+            <label for="filters" class="d-block mb-3 text-center"
+              >Opciones de resultados</label
+            >
+            <fieldset id="filters" class="d-flex justify-content-evenly">
+              <div>
+                <label for="copy-btn-check">Incluir botón de copiar</label>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="copy-btn-checkbox"
+                />
+              </div>
+            </fieldset>
+          </div>
+          <div class="col">
+            <form action="#">
+              <div class="row">
+                <div class="col-9">
+                  <input
+                    type="text"
+                    id="input"
+                    class="form-control"
+                    placeholder="Buscar..."
+                    required
+                  />
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-success" id="search-btn">
+                    Buscar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </form>
+      <table class="table table-bordered table-striped mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio público</th>
+            <th scope="col">Precio neto</th>
+          </tr>
+        </thead>
+        <tbody id="target"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
