@@ -55,10 +55,11 @@ async function processPDF(pdfUrl) {
 
         if (hasResult) {
 
+          console.log(row.text);
+          console.log(index);
           console.log(rows[index + 1].text);
           console.log(rows[index + 2].text);
           console.log(rows[index + 3].text);
-          console.log(rows[index + 4].text);
           
           let description = rows[index + 2].text,
           publicPrice = rows[index + 4].text,
