@@ -41,33 +41,20 @@ async function processPDF(pdfUrl) {
   for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
     const page = await pdfDoc.getPage(pageNumber);
     const rows = await extractRowsAndColumnsFromPage(page);
-    const byDescription = document.querySelector("#description-btn-checkbox").checked;
 
-    var hasResult = false;
-    
     rows.forEach((row, index) => {
-    
-      if (/^[A-Z]{2,3}-[A-Za-z0-9]+/g.test(row.text)) hasResult = true;
-      
-      if (byDescription) {
-        if (/([^\w][^-])+[A-Z]+/g.test(row.text)) hasResult = true;
-      }
+      if (/^[A-Z]{2,3}-[A-Za-z0-9]+/g.test(row.text)) {
+        let description = rows[index + 2].text,
+          publicPrice = rows[index + 4].text,
+          netPrice = rows[index + 6].text;
 
-        if (hasResult) {
-          
-          let name = byDescription ? rows[index - 1].text : row.text, 
-          description = rows[byDescription ? index : index + 1].text,
-          publicPrice = rows[byDescription ? index + 1 : index + 2].text,
-          netPrice = rows[byDescription ? index + 2 : index + 3].text;
-          
-          results.push({
-            name: sanitizeRow(name),
-            description: sanitizeRow(description),
-            publicPrice: sanitizeRow(publicPrice),
-            netPrice: sanitizeRow(netPrice),
-          });
-        } else return;
-     
+        results.push({
+          name: sanitizeRow(row.text),
+          description: sanitizeRow(description),
+          publicPrice: sanitizeRow(publicPrice),
+          netPrice: sanitizeRow(netPrice),
+        });
+      } else return;
     });
   }
 
@@ -123,6 +110,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchBtn = document.querySelector("#search-btn");
   const input = document.querySelector("#input");
 
+  //Temporal
+  const tmpCheckbox = document.querySelector("#description-btn-checkbox");
+  tmpCheckbox.addEventListener("click", alert("Función no disponible por el momento"));
+
+  
   loadBtn.addEventListener("click", async () => {
     target.innerHTML = await generateTemplate(await processPDF(pdfUrl));
   });
