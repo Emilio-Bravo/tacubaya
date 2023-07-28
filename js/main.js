@@ -54,12 +54,6 @@ async function processPDF(pdfUrl) {
       }
 
         if (hasResult) {
-
-          console.log(row.text);
-          console.log(rows[index].text);
-          console.log(rows[index + 1].text);
-          console.log(rows[index + 2].text);
-          console.log(rows[index + 3].text);
           
           let name = byDescription ? rows[index - 1].text : row.text, 
           description = rows[byDescription ? index : index + 1].text,
