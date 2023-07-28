@@ -61,9 +61,9 @@ async function processPDF(pdfUrl) {
           console.log(rows[index + 2].text);
           console.log(rows[index + 3].text);
           
-          let description = rows[index + 2].text,
-          publicPrice = rows[index + 4].text,
-          netPrice = rows[index + 5].text;
+          let description = rows[index + 1].text,
+          publicPrice = rows[index + 2].text,
+          netPrice = rows[index + 3].text;
           
           results.push({
             name: sanitizeRow(row.text),
