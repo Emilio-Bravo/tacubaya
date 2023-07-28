@@ -41,20 +41,27 @@ async function processPDF(pdfUrl) {
   for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
     const page = await pdfDoc.getPage(pageNumber);
     const rows = await extractRowsAndColumnsFromPage(page);
+    const byDescription = document.querySelector("#description-btn-checkbox").checked;
 
+    var hasResult = false;
+    
     rows.forEach((row, index) => {
-      if (/^[A-Z]{2,3}-[A-Za-z0-9]+/g.test(row.text)) {
-        let description = rows[index + 2].text,
-          publicPrice = rows[index + 4].text,
-          netPrice = rows[index + 6].text;
+    
+      if (/^[A-Z]{2,3}-[A-Za-z0-9]+/g.test(row.text)) hasResult = true;
+      
+      if (byDescription) {
+        if (([^\w][^-])+[A-Z]+/g.test(row.text)) hasResult = true;
+      }
 
-        results.push({
-          name: sanitizeRow(row.text),
-          description: sanitizeRow(description),
-          publicPrice: sanitizeRow(publicPrice),
-          netPrice: sanitizeRow(netPrice),
-        });
-      } else return;
+        if (hasResult) {
+          results.push({
+            name: sanitizeRow(row.text),
+            description: sanitizeRow(description),
+            publicPrice: sanitizeRow(publicPrice),
+            netPrice: sanitizeRow(netPrice),
+          });
+        }
+     
     });
   }
 
