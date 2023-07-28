@@ -55,8 +55,8 @@ async function processPDF(pdfUrl) {
 
         if (hasResult) {
 
-          console.log(rows[index.2].text);
-          console.log(rows[index.4].text);
+          console.log(rows[index + 2].text);
+          console.log(rows[index + 4].text);
           
           let description = rows[index + 2].text,
           publicPrice = rows[index + 4].text,
