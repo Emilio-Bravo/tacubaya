@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Temporal
   const tmpCheckbox = document.querySelector("#description-btn-checkbox");
-  tmpCheckbox.addEventListener("click", alert("Función no disponible por el momento"));
+  tmpCheckbox.addEventListener("click", () => {alert("Función no disponible por el momento");});
 
   
   loadBtn.addEventListener("click", async () => {
