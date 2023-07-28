@@ -50,7 +50,7 @@ async function processPDF(pdfUrl) {
       if (/^[A-Z]{2,3}-[A-Za-z0-9]+/g.test(row.text)) hasResult = true;
       
       if (byDescription) {
-        if (([^\w][^-])+[A-Z]+/g.test(row.text)) hasResult = true;
+        if (/([^\w][^-])+[A-Z]+/g.test(row.text)) hasResult = true;
       }
 
         if (hasResult) {
