@@ -54,6 +54,10 @@ async function processPDF(pdfUrl) {
       }
 
         if (hasResult) {
+          let description = rows[index + 2].text,
+          publicPrice = rows[index + 4].text,
+          netPrice = rows[index + 6].text;
+          
           results.push({
             name: sanitizeRow(row.text),
             description: sanitizeRow(description),
